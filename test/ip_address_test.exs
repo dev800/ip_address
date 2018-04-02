@@ -2,7 +2,20 @@ defmodule IpAddressTest do
   use ExUnit.Case
   doctest IpAddress
 
-  test "the truth" do
-    assert 1 + 1 == 2
+  test "find nil" do
+    assert IpAddress.find(nil) == {:error, :null}
   end
+
+  test "find \"\"" do
+    assert IpAddress.find("") == {:error, :empty}
+  end
+
+  test "find! nil" do
+    assert IpAddress.find!(nil) == []
+  end
+
+  test "find! \"\"" do
+    assert IpAddress.find!("") == []
+  end
+
 end
