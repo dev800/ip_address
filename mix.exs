@@ -8,6 +8,7 @@ defmodule IpAddress.Mixfile do
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
      package: package(),
+     description: "IP Address to Chinese Name",
      deps: deps()]
   end
 
@@ -28,7 +29,7 @@ defmodule IpAddress.Mixfile do
 
   defp deps do
     [
-
+      {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
 end
