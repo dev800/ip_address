@@ -1,7 +1,7 @@
 defmodule IpAddress.Monipdb do
   def find(ip_string) when is_binary(ip_string) do
     try do
-      case impl_find_from_erl(ip_string) do
+      case _find_from_erl(ip_string) do
         {:ok, address_string} ->
           addresses =
             String.split(address_string, "\t")
@@ -31,10 +31,10 @@ defmodule IpAddress.Monipdb do
     end
   end
 
-  defp impl_find_from_erl(ip_string) when is_binary(ip_string) do
+  defp _find_from_erl(ip_string) when is_binary(ip_string) do
     :ip_address_erl.find(
       String.to_charlist(ip_string),
-      Path.absname("17monipdb.dat", Application.app_dir(:ip_address_erl, "priv"))
+      Path.absname("17monipdb.dat", Application.app_dir(:ip_address, "priv"))
     )
   end
 end

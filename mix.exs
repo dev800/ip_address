@@ -7,28 +7,28 @@ defmodule IpAddress.Mixfile do
      elixir: "~> 1.3",
      build_embedded: Mix.env == :prod,
      start_permanent: Mix.env == :prod,
+     package: package(),
      deps: deps()]
+  end
+
+  def package do
+    [
+      maintainers: ["happy"],
+      licenses: ["MIT"],
+      links: %{"Github" => "https://github.com/dev800/ip_address"}
+    ]
   end
 
   # Configuration for the OTP application
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :ip_address_erl]]
+    [applications: [:logger]]
   end
 
-  # Dependencies can be Hex packages:
-  #
-  #   {:mydep, "~> 0.3.0"}
-  #
-  # Or git/path repositories:
-  #
-  #   {:mydep, git: "https://github.com/elixir-lang/mydep.git", tag: "0.1.0"}
-  #
-  # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:ip_address_erl, git: "http://github.com/gialib/ip_address_erl.git"}
+
     ]
   end
 end
