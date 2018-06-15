@@ -29,6 +29,7 @@ defmodule IpAddress.Mixfile do
 
   defp deps do
     [
+      {:tiny_util, "~> 0.1.2"},
       {:socket, "~> 0.3.13"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
