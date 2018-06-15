@@ -1,8 +1,4 @@
 defmodule IpAddress.DNS.Server do
-  @moduledoc """
-  TODO: docs
-  TODO: convert this to a `GenServer` and do proper cleanup
-  """
 
   @callback handle(IpAddress.DNS.Record.t(), {:inet.ip(), :inet.port()}) :: IpAddress.DNS.Record.t()
 
