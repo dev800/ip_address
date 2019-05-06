@@ -2,14 +2,16 @@ defmodule IpAddress.Mixfile do
   use Mix.Project
 
   def project do
-    [app: :ip_address,
-     version: "0.1.1",
-     elixir: "~> 1.3",
-     build_embedded: Mix.env == :prod,
-     start_permanent: Mix.env == :prod,
-     package: package(),
-     description: "IP Address to Chinese Name",
-     deps: deps()]
+    [
+      app: :ip_address,
+      version: "0.1.3",
+      elixir: "~> 1.3",
+      build_embedded: Mix.env() == :prod,
+      start_permanent: Mix.env() == :prod,
+      package: package(),
+      description: "IP Address to Chinese Name",
+      deps: deps()
+    ]
   end
 
   def package do
@@ -29,8 +31,8 @@ defmodule IpAddress.Mixfile do
 
   defp deps do
     [
-      {:tiny_util, "~> 0.1.2"},
-      {:socket, "~> 0.3.13"},
+      {:tiny_util, "~> 0.2"},
+      {:socket, "~> 0.3"},
       {:ex_doc, ">= 0.0.0", only: :dev}
     ]
   end
