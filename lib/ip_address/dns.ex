@@ -34,7 +34,7 @@ defmodule IpAddress.DNS do
     dns_server = Keyword.get(opts, :server, @default_server)
     timeout = Keyword.get(opts, :timeout, @default_timeout)
 
-    TinyUtil.timeout(
+    timeout(
       fn ->
         record = %IpAddress.DNS.Record{
           header: %IpAddress.DNS.Header{rd: true},
@@ -50,5 +50,18 @@ defmodule IpAddress.DNS do
       end,
       timeout: timeout
     )
+  end
+
+  def timeout(call_fn, opts \\ []) do
+    try do
+      result =
+        call_fn
+        |> Task.async()
+        |> Task.await(opts[:timeout] || @default_timeout)
+
+      {:ok, result}
+    catch
+      :exit, _ -> {:error, :timeout}
+    end
   end
 end
